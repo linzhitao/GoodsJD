@@ -53,4 +53,27 @@ public class LoginDAOImpl implements LoginDAO {
         }
         return uid;
     }
+
+    //注册
+    public boolean insert(String account, String password) {
+        try {
+            sql="INSERT INTO user (account,password) VALUE (?,?)";
+            Connection conn = Close.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,account);
+            ps.setString(2,password);
+            int rs = ps.executeUpdate();
+            if (rs>0){
+                sure=true;
+            }else {
+                sure=false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Close.release(ps, conn);
+        }
+        return sure;
+    }
 }
