@@ -31,6 +31,7 @@ public class RegisterServlet extends HttpServlet {
         boolean insertyN = loginService.insertUser(account, password);
 
         if (insertyN){
+            System.out.println(insertyN);
             resp.getWriter().println("注册成功");
             //注册成功，转发到登录页面
             req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
