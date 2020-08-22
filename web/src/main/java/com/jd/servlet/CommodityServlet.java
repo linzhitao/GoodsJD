@@ -27,9 +27,37 @@ public class CommodityServlet extends HttpServlet {
         String servletPath = req.getServletPath();
         if ("/commodity".equals(servletPath)){
             commodity(req,resp);
+        }else if ("/GotoAdd".equals(servletPath)){
+            gotoAdd(req,resp);
+        }else if ("/addGoods".equals(servletPath)){
+            addGoods(req, resp);
+        }
+    }
+    //跳转添加网页
+    private void gotoAdd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/WEB-INF/addGoods.jsp").forward(req, resp);
+    }
+
+    //添加商品
+    private void addGoods(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //获取表单元素
+        String pid = req.getParameter("pid");
+        String cid = req.getParameter("cid");
+        String pname = req.getParameter("pname");
+        String prices = req.getParameter("price");
+        double price = Double.parseDouble(prices);
+        //传入service层
+        boolean b = commodityService.insertGoods(pid,cid,pname, price);
+        if (b){
+            resp.sendRedirect("/commodity");
+        }else {
+            resp.getWriter().println("添加失败");
+            //3秒刷新网页
+            resp.sendRedirect("/commodity");
         }
     }
 
+    //查询商品
     private void commodity(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //调用service层，查询商品表
         List<Products> products = commodityService.selectAll();
