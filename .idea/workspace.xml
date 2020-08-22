@@ -7,18 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5934423-839a-4c82-9524-07f68e4601eb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/target/classes/com/jd/dao/LoginDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/classes/com/jd/dao/LoginDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/target/classes/com/jd/dao/impl/LoginDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/dao/target/classes/com/jd/dao/impl/LoginDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/src/main/java/com/jd/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/service/src/main/java/com/jd/service/impl/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/jd/service/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/jd/service/LoginService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/target/classes/com/jd/service/impl/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/service/target/classes/com/jd/service/impl/LoginServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/src/main/java/com/jd/servlet/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/java/com/jd/servlet/RegisterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/target/web.war" beforeDir="false" afterPath="$PROJECT_DIR$/web/target/web.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/com.baidu-dao-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/com.baidu-dao-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/com.baidu-service-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/lib/com.baidu-service-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/target/web/WEB-INF/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/target/web/WEB-INF/login.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +202,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
