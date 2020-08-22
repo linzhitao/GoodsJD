@@ -42,6 +42,5 @@
     </table>
     <a href="${pageContext.request.contextPath}/GotoAdd">添加商品</a>
     <a href="/selectCart">查看购物车</a>
-
 </body>
 </html>

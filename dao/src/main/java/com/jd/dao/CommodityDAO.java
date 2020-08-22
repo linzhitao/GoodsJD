@@ -13,4 +13,6 @@ public interface CommodityDAO {
     boolean updateGoods(Products products);
     //删除商品
     boolean deleteGoodsById(String pid);
+    //通过pid获取商品
+    List<Products> queryGoodsByUid(Integer uid);
 }

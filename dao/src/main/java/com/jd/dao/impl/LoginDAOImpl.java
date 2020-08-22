@@ -7,10 +7,10 @@ import com.jd.util.Close;
 import java.sql.*;
 
 public class LoginDAOImpl implements LoginDAO {
-    private Connection conn=null;
-    private Statement st =null;
-    private ResultSet rs=null;
-    private PreparedStatement ps=null;
+    private Connection conn;
+    private Statement st ;
+    private ResultSet rs;
+    private PreparedStatement ps;
     private boolean sure=false;
     private String sql;
 
@@ -35,7 +35,7 @@ public class LoginDAOImpl implements LoginDAO {
 
     //用户登录非sql注入
     public Integer login(String account, String password) {
-        int uid=0;
+        Integer uid=null;
         try {
             conn = Close.getConn();
             sql = "select * from user where account=? and password=?";
@@ -51,6 +51,7 @@ public class LoginDAOImpl implements LoginDAO {
         }finally {
             Close.release(rs,ps,conn);
         }
+        System.out.println(uid);
         return uid;
     }
 

@@ -1,5 +1,6 @@
 package com.jd.service.impl;
 
+
 import com.jd.bean.Products;
 import com.jd.dao.CommodityDAO;
 import com.jd.dao.impl.CommodityDAOImpl;
@@ -21,7 +22,7 @@ public class CommodityServiceImpl implements CommodityService {
     public boolean modifyGood(Products products) {
             return commodityDAO.updateGoods(products);
     }
-
+    //删除商品
     public boolean deleteGoodsByID(String pid) {
         return commodityDAO.deleteGoodsById(pid);
     }

@@ -1,0 +1,29 @@
+package com.jd.service.impl;
+
+import com.jd.bean.Products;
+import com.jd.dao.CartDAO;
+import com.jd.dao.CommodityDAO;
+import com.jd.dao.impl.CartDAOImpl;
+import com.jd.dao.impl.CommodityDAOImpl;
+import com.jd.service.CartService;
+
+import java.util.List;
+
+public class CartServiceImpl  implements CartService {
+    private CartDAO cartDAO= new CartDAOImpl();
+    private CommodityDAO commodityDAO=new CommodityDAOImpl();
+
+    public void addCart(Integer uid, Integer pid) {
+        //判断pid商品是否存在，不存在则添加
+        boolean b = cartDAO.selectByPid(pid);
+        if (b){
+            System.out.println("商品已存在购物车");
+        }else {
+            cartDAO.insert(uid,pid);
+        }
+    }
+
+    public List<Products> queryGoodsByUid(Integer uid) {
+        return commodityDAO.queryGoodsByUid(uid);
+    }
+}

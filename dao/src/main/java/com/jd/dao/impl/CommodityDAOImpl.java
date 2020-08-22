@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommodityDAOImpl implements CommodityDAO {
-    private Connection conn;
+    private Connection conn = Close.getConn();
     private Statement st;
     private ResultSet rs;
     private PreparedStatement ps;
@@ -96,6 +96,7 @@ public class CommodityDAOImpl implements CommodityDAO {
             ps = conn.prepareStatement(sql);
             ps.setString(1,pid);
             int i = ps.executeUpdate();
+
             if (i>0){
                 sure = true;
             }else {
@@ -108,4 +109,30 @@ public class CommodityDAOImpl implements CommodityDAO {
         }
         return sure;
     }
+
+    public List<Products> queryGoodsByUid(Integer uid) {
+        try {
+            conn = Close.getConn();
+            sql = "SELECT * from products where pid in (select pid from itable where uid=?)";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,uid);
+            rs = ps.executeQuery();
+            productList = new ArrayList<Products>();
+            while (rs.next()){
+                products =new Products();
+                products.setPid(rs.getInt("pid"));
+                products.setPid(rs.getInt("cid"));
+                products.setPname(rs.getString("pname"));
+                products.setPrice(rs.getDouble("price"));
+                productList.add(products);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Close.release(rs,ps,conn);
+        }
+
+        return productList;
+    }
+
 }

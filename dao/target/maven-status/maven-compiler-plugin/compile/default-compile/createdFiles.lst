@@ -1,0 +1,9 @@
+com\jd\bean\Products.class
+com\jd\dao\impl\LoginDAOImpl.class
+com\jd\dao\CommodityDAO.class
+com\jd\dao\impl\CartDAOImpl.class
+com\jd\dao\impl\CommodityDAOImpl.class
+com\jd\dao\CartDAO.class
+com\jd\util\Close.class
+com\jd\bean\User.class
+com\jd\dao\LoginDAO.class

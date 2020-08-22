@@ -40,6 +40,20 @@
     <url-pattern>/modifyGoods</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>cart</servlet-name>
+    <servlet-class>com.jd.servlet.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cart</servlet-name>
+    <url-pattern>/addCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>cart</servlet-name>
+    <url-pattern>/selectCart</url-pattern>
+  </servlet-mapping>
+  
+  
   <filter>
     <filter-name>charsetEncodingFilter</filter-name>
     <filter-class>com.jd.filter.CharsetEncodingFilter</filter-class>
