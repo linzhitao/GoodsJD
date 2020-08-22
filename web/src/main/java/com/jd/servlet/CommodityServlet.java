@@ -31,8 +31,24 @@ public class CommodityServlet extends HttpServlet {
             gotoAdd(req,resp);
         }else if ("/addGoods".equals(servletPath)){
             addGoods(req, resp);
+        }else if ("/modif".equals(servletPath)){
+            modif(req,resp);
         }
     }
+    //点击修改商品时，拿到要修改商品的所有数据，返回页面显示
+    private void modif(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Integer pid = Integer.parseInt(req.getParameter("pid"));
+        Integer cid = Integer.parseInt(req.getParameter("cid"));
+        String pname = req.getParameter("pname");
+        double price = Double.parseDouble(req.getParameter("price"));
+        HttpSession session = req.getSession();
+        session.setAttribute("pid",pid);
+        session.setAttribute("cid",cid);
+        session.setAttribute("pname",pname);
+        session.setAttribute("price",price);
+        req.getRequestDispatcher("/WEB-INF/modifGoods.jsp").forward(req, resp);
+    }
+
     //跳转添加网页
     private void gotoAdd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/addGoods.jsp").forward(req, resp);
