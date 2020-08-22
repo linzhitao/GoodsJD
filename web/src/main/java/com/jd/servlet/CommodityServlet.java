@@ -35,8 +35,20 @@ public class CommodityServlet extends HttpServlet {
             modif(req,resp);
         }else if ("/modifyGoods".equals(servletPath)){
             modifyGoods(req,resp);
+        }else if ("/GoodsDrop".equals(servletPath)){
+            goodsDrop(req,resp);
         }
     }
+    //删除商品
+    private void goodsDrop(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String pid = req.getParameter("pid");
+        boolean b = commodityService.deleteGoodsByID(pid);
+        if (b){
+            resp.sendRedirect("/commodity");
+        }
+
+    }
+
     //获取修改页面请求参数
     private void modifyGoods(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("utf-8");
