@@ -5,4 +5,13 @@
   <welcome-file-list>
     <welcome-file>/WEB-INF/login.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>commodity</servlet-name>
+    <servlet-class>com.jd.servlet.CommodityServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>commodity</servlet-name>
+    <url-pattern>/commodity</url-pattern>
+  </servlet-mapping>
 </web-app>
