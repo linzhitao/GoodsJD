@@ -88,4 +88,24 @@ public class CommodityDAOImpl implements CommodityDAO {
         }
         return sure;
     }
+
+    public boolean deleteGoodsById(String pid) {
+        try {
+            conn = Close.getConn();
+            sql = "DELETE FROM products where pid = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,pid);
+            int i = ps.executeUpdate();
+            if (i>0){
+                sure = true;
+            }else {
+                sure = false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Close.release(ps,conn);
+        }
+        return sure;
+    }
 }

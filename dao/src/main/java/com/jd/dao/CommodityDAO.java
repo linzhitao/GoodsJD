@@ -11,4 +11,6 @@ public interface CommodityDAO {
     boolean insertGoods(String pid, String cid, String pname, double price);
     //修改商品
     boolean updateGoods(Products products);
+    //删除商品
+    boolean deleteGoodsById(String pid);
 }
