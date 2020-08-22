@@ -18,7 +18,7 @@ public class LoginServiceImpl implements LoginService {
         Integer login = loginDao.login(account, password);
         System.out.println(login);
         //如果返回true代表有值
-        if (login!=null){
+        if (login!=0){
             System.out.println("用户已存在");
             return false;
         }else {

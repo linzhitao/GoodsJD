@@ -17,7 +17,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //因为默认是get请求，所以我用来跳转页面
-        req.getRequestDispatcher("/WEB-INF/shopping.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/register.jsp").forward(req,resp);
     }
 
     @Override

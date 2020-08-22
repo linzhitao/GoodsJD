@@ -11,6 +11,6 @@
     密码:<input type="password" name="password"><br/>
     <input type="submit" value="登录">
 </form>
-<button><a href=""${pageContext.request.contextPath}/register">注册</a></button>
+<button><a href="${pageContext.request.contextPath}/register">注册</a></button>
 </body>
 </html>
