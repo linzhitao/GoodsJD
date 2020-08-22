@@ -8,4 +8,6 @@ public interface CommodityService {
     List<Products> selectAll();
 
     boolean insertGoods(String pid, String cid, String pname, double price);
+
+    boolean modifyGood(Products products);
 }

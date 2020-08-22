@@ -33,8 +33,31 @@ public class CommodityServlet extends HttpServlet {
             addGoods(req, resp);
         }else if ("/modif".equals(servletPath)){
             modif(req,resp);
+        }else if ("/modifyGoods".equals(servletPath)){
+            modifyGoods(req,resp);
         }
     }
+    //获取修改页面请求参数
+    private void modifyGoods(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=utf-8");
+        int pid = Integer.parseInt(req.getParameter("pid"));
+        int cid = Integer.parseInt(req.getParameter("cid"));
+        String pname = req.getParameter("pname");
+        double price = Double.parseDouble(req.getParameter("price"));
+        System.out.println(pname);
+        Products products = new Products(pid, cid, pname, price);
+
+        boolean b = commodityService.modifyGood(products);
+        if (b){
+            resp.sendRedirect("/commodity");
+        }else {
+            resp.getWriter().println("修改失败");
+            //重定向回到商品表
+            resp.sendRedirect("/commodity");
+        }
+    }
+
     //点击修改商品时，拿到要修改商品的所有数据，返回页面显示
     private void modif(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer pid = Integer.parseInt(req.getParameter("pid"));
