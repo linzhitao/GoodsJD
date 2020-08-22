@@ -40,7 +40,7 @@ public class CartServlet extends HttpServlet {
         Integer uid = (Integer) req.getSession().getAttribute("uid");
         boolean d = cartService.deleteGoods(pid,uid);
         if (d){
-            req.getRequestDispatcher("/WEB-INF/cart.jsp").forward(req, resp);
+            req.getRequestDispatcher("/selectCart").forward(req, resp);
         }else {
             System.out.println();
         }
