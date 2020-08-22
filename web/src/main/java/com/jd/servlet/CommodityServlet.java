@@ -35,6 +35,6 @@ public class CommodityServlet extends HttpServlet {
         List<Products> products = commodityService.selectAll();
         HttpSession session = req.getSession();
         session.setAttribute("products",products);
-        req.getRequestDispatcher("/WEB-INF/shooping.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/shopping.jsp").forward(req,resp);
     }
 }

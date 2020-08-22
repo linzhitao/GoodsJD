@@ -1,0 +1,31 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+  <welcome-file-list>
+    <welcome-file>/WEB-INF/login.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>commodity</servlet-name>
+    <servlet-class>com.jd.servlet.CommodityServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>commodity</servlet-name>
+    <url-pattern>/commodity</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>charsetEncodingFilter</filter-name>
+    <filter-class>com.jd.filter.CharsetEncodingFilter</filter-class>
+    <init-param>
+      <param-name>CharsetEncoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>charsetEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+</web-app>
