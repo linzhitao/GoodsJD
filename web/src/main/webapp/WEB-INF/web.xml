@@ -27,6 +27,11 @@
 
   <servlet-mapping>
     <servlet-name>commodity</servlet-name>
+    <url-pattern>/addGoods</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>commodity</servlet-name>
     <url-pattern>/modifyGoods</url-pattern>
   </servlet-mapping>
 

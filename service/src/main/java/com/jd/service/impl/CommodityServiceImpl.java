@@ -17,4 +17,8 @@ public class CommodityServiceImpl implements CommodityService {
     public boolean insertGoods(String pid, String cid, String pname, double price) {
         return commodityDAO.insertGoods(pid,cid,pname,price);
     }
+    //修改商品
+    public boolean modifyGood(Products products) {
+            return commodityDAO.updateGoods(products);
+    }
 }

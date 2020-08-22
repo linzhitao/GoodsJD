@@ -6,6 +6,12 @@ public class Products {
     private String pname;
     private double price;
 
+    public Products(Integer pid, Integer cid, String pname, double price) {
+    }
+
+    public Products() {
+    }
+
     public Integer getPid() {
         return pid;
     }

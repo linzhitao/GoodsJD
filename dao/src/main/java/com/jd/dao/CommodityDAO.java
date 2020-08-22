@@ -9,4 +9,6 @@ public interface CommodityDAO {
     List<Products> findProducts();
     //添加商品
     boolean insertGoods(String pid, String cid, String pname, double price);
+    //修改商品
+    boolean updateGoods(Products products);
 }

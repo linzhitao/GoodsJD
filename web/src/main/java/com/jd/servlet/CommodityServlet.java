@@ -52,7 +52,7 @@ public class CommodityServlet extends HttpServlet {
         if (b){
             resp.sendRedirect("/commodity");
         }else {
-            resp.getWriter().println("修改失败");
+            resp.getWriter().println("id已存在");
             //重定向回到商品表
             resp.sendRedirect("/commodity");
         }

@@ -65,4 +65,27 @@ public class CommodityDAOImpl implements CommodityDAO {
         }
         return sure;
     }
+    //修改商品
+    public boolean updateGoods(Products products) {
+        try {
+            conn = Close.getConn();
+            sql = "UPDATE products SET cid=?,pname=?,price=? WHERE pid=?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,products.getCid());
+            ps.setString(2,products.getPname());
+            ps.setDouble(3,products.getPrice());
+            ps.setInt(4,products.getPid());
+            int i = ps.executeUpdate();
+            if (i>0){
+                sure = true;
+            }else {
+                sure = false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Close.release(ps,conn);
+        }
+        return sure;
+    }
 }
