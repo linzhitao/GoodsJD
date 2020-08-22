@@ -28,7 +28,7 @@
             <td>${p.pid}</td>
             <td>${p.pname}</td>
             <td>${p.price}</td>
-            <td><a href="${pageContext.request.contextPath}/reGoodsCart?pid=${p.pid}">删除商品</a></td>
+            <td><a href="/reGoodsCart?pid=${p.pid}">删除商品</a></td>
         </tr>
     </c:forEach>
 </table>

@@ -44,13 +44,20 @@
     <servlet-name>cart</servlet-name>
     <servlet-class>com.jd.servlet.CartServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>cart</servlet-name>
     <url-pattern>/addCart</url-pattern>
   </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>cart</servlet-name>
     <url-pattern>/selectCart</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>cart</servlet-name>
+    <url-pattern>/reGoodsCart</url-pattern>
   </servlet-mapping>
   
   

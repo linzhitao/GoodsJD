@@ -10,4 +10,6 @@ public interface CartService {
     void addCart(Integer uid, Integer pid);
 
     List<Products> queryGoodsByUid(Integer uid);
+
+    boolean deleteGoods(Integer pid, Integer uid);
 }

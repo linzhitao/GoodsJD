@@ -30,6 +30,19 @@ public class CartServlet extends HttpServlet {
             addCart(req,resp);
         }else if ("/selectCart".equals(servletPath)){
             selectCart(req,resp);
+        }else if ("/reGoodsCart".equals(servletPath)){
+            reGoodsCart(req,resp);
+        }
+    }
+    //购物车中删除某个商品
+    private void reGoodsCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Integer pid =Integer.parseInt(req.getParameter("pid"));
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+        boolean d = cartService.deleteGoods(pid,uid);
+        if (d){
+            req.getRequestDispatcher("/WEB-INF/cart.jsp").forward(req, resp);
+        }else {
+            System.out.println();
         }
     }
 

@@ -44,4 +44,25 @@ public class CartDAOImpl implements CartDAO {
         }
         return sure;
     }
+
+    public boolean deleteGoods(Integer pid, Integer uid) {
+        try {
+            conn = Close.getConn();
+            sql = "DELETE from itable where uid=? and pid=?";
+            ps = conn.prepareStatement(sql);
+            ps.setObject(1,uid);
+            ps.setObject(2,pid);
+            int i = ps.executeUpdate();
+            if (i>0){
+                sure=true;
+            }else {
+                sure=false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Close.release(ps,conn);
+        }
+        return sure;
+    }
 }

@@ -26,4 +26,8 @@ public class CartServiceImpl  implements CartService {
     public List<Products> queryGoodsByUid(Integer uid) {
         return commodityDAO.queryGoodsByUid(uid);
     }
+
+    public boolean deleteGoods(Integer pid, Integer uid) {
+        return cartDAO.deleteGoods(pid,uid);
+    }
 }

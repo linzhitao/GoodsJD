@@ -121,7 +121,7 @@ public class CommodityDAOImpl implements CommodityDAO {
             while (rs.next()){
                 products =new Products();
                 products.setPid(rs.getInt("pid"));
-                products.setPid(rs.getInt("cid"));
+                products.setCid(rs.getInt("cid"));
                 products.setPname(rs.getString("pname"));
                 products.setPrice(rs.getDouble("price"));
                 productList.add(products);

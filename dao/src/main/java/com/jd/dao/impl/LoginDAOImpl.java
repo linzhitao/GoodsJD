@@ -1,6 +1,5 @@
 package com.jd.dao.impl;
 
-import com.jd.bean.User;
 import com.jd.dao.LoginDAO;
 import com.jd.util.Close;
 
