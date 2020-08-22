@@ -42,4 +42,27 @@ public class CommodityDAOImpl implements CommodityDAO {
         }
         return productList;
     }
+    //添加商品
+    public boolean insertGoods(String pid, String cid, String pname, double price) {
+        try {
+            conn = Close.getConn();
+            sql = "insert into products (pid,cid,pname,price) values (?,?,?,?)";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,pid);
+            ps.setString(2,cid);
+            ps.setString(3,pname);
+            ps.setDouble(4,price);
+            int i = ps.executeUpdate();
+            if (i>0){
+                sure=true;
+            }else {
+                sure=false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            Close.release(ps,conn);
+        }
+        return sure;
+    }
 }
