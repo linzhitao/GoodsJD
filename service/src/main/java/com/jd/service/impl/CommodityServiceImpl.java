@@ -13,4 +13,8 @@ public class CommodityServiceImpl implements CommodityService {
     public List<Products> selectAll() {
         return commodityDAO.findProducts();
     }
+    //添加商品
+    public boolean insertGoods(String pid, String cid, String pname, double price) {
+        return commodityDAO.insertGoods(pid,cid,pname,price);
+    }
 }
