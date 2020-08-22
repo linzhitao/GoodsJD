@@ -21,4 +21,8 @@ public class CommodityServiceImpl implements CommodityService {
     public boolean modifyGood(Products products) {
             return commodityDAO.updateGoods(products);
     }
+
+    public boolean deleteGoodsByID(String pid) {
+        return commodityDAO.deleteGoodsById(pid);
+    }
 }

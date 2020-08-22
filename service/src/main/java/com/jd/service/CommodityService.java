@@ -11,4 +11,6 @@ public interface CommodityService {
     boolean insertGoods(String pid, String cid, String pname, double price);
     //修改商品
     boolean modifyGood(Products products);
+    //删除商品
+    boolean deleteGoodsByID(String pid);
 }
