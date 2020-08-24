@@ -44,16 +44,34 @@ public class CartServlet extends HttpServlet {
         //用户id
         Integer uid = (Integer) req.getSession().getAttribute("uid");
         //用户登录
-
+        if(uid!=null){
             //商品id
-        Integer pid =Integer.parseInt(req.getParameter("pid"));
-        boolean d = cartService.deleteGoods(pid,uid);
-        if (d){
-            req.getRequestDispatcher("/selectCart").forward(req, resp);
-        }else {
-            System.out.println();
-        }
+            Integer pid =Integer.parseInt(req.getParameter("pid"));
 
+            boolean isExist = cartService.deleteGoods(pid,uid);
+            if (isExist){
+                req.getRequestDispatcher("/selectCart").forward(req, resp);
+            }else {
+                resp.getWriter().println("删除失败");
+            }
+        }else {
+            //游客
+            int pid = Integer.valueOf(req.getParameter("pid"));
+            System.out.println(pid+"//");
+            HttpSession session = req.getSession();
+            guestList = (List<Products>) session.getAttribute("guestList");
+            for (Products product : guestList) {
+                Integer pid1 = product.getPid();
+                System.out.println(pid1+"--");
+                if (pid1==pid){
+                    guestList.remove(product);
+                    System.out.println(1);
+                    session.setAttribute("guestList",guestList);
+                    req.getRequestDispatcher(cartJspPath).forward(req, resp);
+                    return;
+                }
+            }
+        }
 
     }
 

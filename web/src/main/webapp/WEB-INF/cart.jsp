@@ -33,13 +33,13 @@
         </tr>
     </c:forEach>
     </c:if>
-    <c:if  test="${uid==null}">
+    <c:if test="${uid==null}">
     <c:forEach items="${sessionScope.guestList}" var="g">
         <tr>
             <td>${g.pid}</td>
             <td>${g.pname}</td>
             <td>${g.price}</td>
-            <td><a href="">删除商品</a> </td>
+            <td><a href="/reGoodsCart?pid=${g.pid}">删除商品</a> </td>
         </tr>
     </c:forEach>
     </c:if>
