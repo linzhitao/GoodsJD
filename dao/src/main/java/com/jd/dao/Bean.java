@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.List;
 
 public class Bean {
-    public Connection conn = Close.getConn();
+    public Connection conn;
     public Statement statement;
     public ResultSet resultSet;
     protected PreparedStatement preparedStatement;

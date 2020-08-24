@@ -58,7 +58,6 @@ public class CartServlet extends HttpServlet {
         }else {
             //游客
             int pid = Integer.valueOf(req.getParameter("pid"));
-            System.out.println(pid+"//");
             HttpSession session = req.getSession();
             guestList = (List<Products>) session.getAttribute("guestList");
             for (Products product : guestList) {
@@ -66,7 +65,6 @@ public class CartServlet extends HttpServlet {
                 System.out.println(pid1+"--");
                 if (pid1==pid){
                     guestList.remove(product);
-                    System.out.println(1);
                     session.setAttribute("guestList",guestList);
                     req.getRequestDispatcher(cartJspPath).forward(req, resp);
                     return;

@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String account = req.getParameter("account");
         String password = req.getParameter("password");
+
         //将数据传入service层
         Integer uid = loginService.loginUser(account, password);
         if (uid!=null){

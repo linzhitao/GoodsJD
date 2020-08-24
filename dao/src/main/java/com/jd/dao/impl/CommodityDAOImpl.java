@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommodityDAOImpl extends Bean implements CommodityDAO {
-
+    public Connection conn = Close.getConn();
 
     //查看商品表，返回商品信息
     public List<Products> findProducts() {
@@ -40,6 +40,7 @@ public class CommodityDAOImpl extends Bean implements CommodityDAO {
     //添加商品
     public boolean insertGoods(String pid, String cid, String pname, double price) {
         try {
+            conn=Close.getConn();
             sql = "insert into products (pid,cid,pname,price) values (?,?,?,?)";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,pid);
@@ -62,6 +63,7 @@ public class CommodityDAOImpl extends Bean implements CommodityDAO {
     //修改商品
     public boolean updateGoods(Products products) {
         try {
+            conn=Close.getConn();
             sql = "UPDATE products SET cid=?,pname=?,price=? WHERE pid=?";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1,products.getCid());
@@ -84,6 +86,7 @@ public class CommodityDAOImpl extends Bean implements CommodityDAO {
 
     public boolean deleteGoodsById(String pid) {
         try {
+            conn=Close.getConn();
             sql = "DELETE FROM products where pid = ?";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,pid);
@@ -104,6 +107,7 @@ public class CommodityDAOImpl extends Bean implements CommodityDAO {
 
     public List<Products> queryGoodsByUid(Integer uid) {
         try {
+            conn=Close.getConn();
             sql = "SELECT * from products where pid in (select pid from itable where uid=?)";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1,uid);

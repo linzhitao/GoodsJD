@@ -10,7 +10,6 @@ public class CharsetEncodingFilter implements Filter{
     public void init(FilterConfig filterConfig) throws ServletException {
         // 接收web.xml配置文件中的初始参数
         encoding = filterConfig.getInitParameter("CharsetEncoding");
-
     }
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

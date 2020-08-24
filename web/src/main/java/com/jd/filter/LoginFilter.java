@@ -8,7 +8,6 @@ import java.io.IOException;
 public class LoginFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
@@ -28,8 +27,8 @@ public class LoginFilter implements Filter {
             if (account!=null){
                 chain.doFilter(req,resp);
             }else {
+                //游客添加购物车、查看购物车、删除购物车请求放行
                 if (uri.contains("selectCart")||uri.contains("addCart")||uri.contains("reGoodsCart")){
-                    //查看购物车和加入购物车，游客是可以操作的所以放行
                     chain.doFilter(req,resp);
                 }else {
                     //其他的请求就会拦截
