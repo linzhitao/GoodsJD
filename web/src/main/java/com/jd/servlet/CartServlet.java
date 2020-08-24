@@ -15,6 +15,10 @@ import java.util.List;
 
 public class CartServlet extends HttpServlet {
     private CartService cartService = new CartServiceImpl();
+    private List<Products> guestList = new ArrayList<>();
+    private List<Products> products;
+    private String cartJspPath = "/WEB-INF/cart.jsp";
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doRequest(req,resp);
@@ -37,14 +41,20 @@ public class CartServlet extends HttpServlet {
     }
     //购物车中删除某个商品
     private void reGoodsCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer pid =Integer.parseInt(req.getParameter("pid"));
+        //用户id
         Integer uid = (Integer) req.getSession().getAttribute("uid");
+        //用户登录
+
+            //商品id
+        Integer pid =Integer.parseInt(req.getParameter("pid"));
         boolean d = cartService.deleteGoods(pid,uid);
         if (d){
             req.getRequestDispatcher("/selectCart").forward(req, resp);
         }else {
             System.out.println();
         }
+
+
     }
 
     //查看购物车
@@ -52,11 +62,11 @@ public class CartServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Integer uid = (Integer) session.getAttribute("uid");
         if(uid!=null){
-            List<Products> products = cartService.queryGoodsByUid(uid);
+            products = cartService.queryGoodsByUid(uid);
             session.setAttribute("pro",products);
-            req.getRequestDispatcher("/WEB-INF/cart.jsp").forward(req, resp);
+            req.getRequestDispatcher(cartJspPath).forward(req, resp);
         }else {
-            req.getRequestDispatcher("/WEB-INF/cart.jsp").forward(req, resp);
+            req.getRequestDispatcher(cartJspPath).forward(req, resp);
         }
 
     }
@@ -68,23 +78,19 @@ public class CartServlet extends HttpServlet {
         Integer pid= Integer.parseInt(req.getParameter("pid"));
         String pname = req.getParameter("pname");
         Double price = Double.valueOf(req.getParameter("price"));
-        List<Products> guestList = new ArrayList<>();
 
         if(uid!=null){
             //用户登录
             cartService.addCart(uid,pid);
             req.getRequestDispatcher("/commodity").forward(req,resp);
-
         }else {
-            System.out.println(1);
             //游客登录
-            Products products = new Products();
-            products.setPid(pid);
-            products.setPname(pname);
-            products.setPrice(price);
-            guestList.add(products);
-            System.out.println(products.toString());
-            req.getSession().setAttribute("guestList",guestList);
+            Products product = new Products();
+            product.setPid(pid);
+            product.setPname(pname);
+            product.setPrice(price);
+            guestList.add(product);
+            session.setAttribute("guestList",guestList);
             req.getRequestDispatcher("/commodity").forward(req,resp);
         }
 

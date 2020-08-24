@@ -36,6 +36,7 @@
             <td>
                 <a href="${pageContext.request.contextPath}/modif?pid=${user.pid}&cid=${user.cid}&pname=${user.pname}&price=${user.price}">修改商品</a><br/>
                 <a href="${pageContext.request.contextPath}/GoodsDrop?pid=${user.pid}">删除商品</a>
+
             </td>
         </tr>
         </c:forEach>
