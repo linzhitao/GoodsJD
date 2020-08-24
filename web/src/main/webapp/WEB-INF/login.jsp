@@ -6,6 +6,7 @@
 </head>
 <body>
 <h2>用户登录!</h2>
+<hr>
 <form action="/login" method="post">
     用户:<input type="text" name="account"><br/>
     密码:<input type="password" name="password"><br/>

@@ -18,6 +18,7 @@
 <h2>在线购物</h2>
 <hr>
     <table border="1" width="600">
+
         <tr bgcolor="#dddddd">
             <td align="center" width="50">商品id</td>
             <td align="center" width="30">类别id</td>
@@ -40,6 +41,7 @@
             </td>
         </tr>
         </c:forEach>
+
     </table>
     <a href="${pageContext.request.contextPath}/GotoAdd">添加商品</a>
     <a href="/selectCart">查看购物车</a>

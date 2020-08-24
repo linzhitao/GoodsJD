@@ -1,6 +1,5 @@
 package com.jd.service.impl;
 
-import com.jd.bean.User;
 import com.jd.dao.LoginDAO;
 import com.jd.dao.impl.LoginDAOImpl;
 import com.jd.service.LoginService;

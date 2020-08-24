@@ -10,6 +10,6 @@ public interface CartService {
     void addCart(Integer uid, Integer pid);
     //根据uid查询商品
     List<Products> queryGoodsByUid(Integer uid);
-
+    //删除购物车中的某个商品
     boolean deleteGoods(Integer pid, Integer uid);
 }

@@ -17,6 +17,7 @@
 <h2>购物车</h2>
 <hr>
 <table border="1" width="600">
+
     <tr bgcolor="#dddddd">
         <td align="center" width="50">商品id</td>
         <td align="center" width="80">商品名称</td>
@@ -43,6 +44,7 @@
         </tr>
     </c:forEach>
     </c:if>
+
 </table>
 
 </body>

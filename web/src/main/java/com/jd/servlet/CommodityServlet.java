@@ -14,6 +14,9 @@ import java.util.List;
 
 public class CommodityServlet extends HttpServlet {
     private CommodityService commodityService=new CommodityServiceImpl();
+    private String prices="price";
+    private String pnames="pname";
+    private String comm="/commodity";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doRequest(req,resp);
@@ -25,7 +28,7 @@ public class CommodityServlet extends HttpServlet {
 
     private void doRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String servletPath = req.getServletPath();
-        if ("/commodity".equals(servletPath)){
+        if (comm.equals(servletPath)){
             commodity(req,resp);
         }else if ("/GotoAdd".equals(servletPath)){
             gotoAdd(req,resp);
@@ -40,33 +43,33 @@ public class CommodityServlet extends HttpServlet {
         }
     }
     //删除商品
-    private void goodsDrop(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void goodsDrop(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String pid = req.getParameter("pid");
         boolean b = commodityService.deleteGoodsByID(pid);
         if (b){
-            resp.sendRedirect("/commodity");
+            req.getRequestDispatcher(comm).forward(req,resp);
         }
 
     }
 
     //获取修改页面请求参数
-    private void modifyGoods(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void modifyGoods(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.setCharacterEncoding("utf-8");
         resp.setContentType("text/html;charset=utf-8");
         int pid = Integer.parseInt(req.getParameter("pid"));
         int cid = Integer.parseInt(req.getParameter("cid"));
-        String pname = req.getParameter("pname");
-        Double price =Double.valueOf(req.getParameter("price")) ;
+        String pname = req.getParameter(pnames);
+        Double price =Double.valueOf(req.getParameter(prices)) ;
         System.out.println(pname);
         Products products = new Products(pid, cid, pname, price);
 
-        boolean b = commodityService.modifyGood(products);
-        if (b){
-            resp.sendRedirect("/commodity");
+        boolean isExist = commodityService.modifyGood(products);
+        if (isExist){
+            req.getRequestDispatcher(comm).forward(req,resp);
         }else {
             resp.getWriter().println("id已存在");
             //重定向回到商品表
-            resp.sendRedirect("/commodity");
+            req.getRequestDispatcher(comm).forward(req,resp);
         }
     }
 
@@ -74,8 +77,8 @@ public class CommodityServlet extends HttpServlet {
     private void modif(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer pid = Integer.parseInt(req.getParameter("pid"));
         Integer cid = Integer.parseInt(req.getParameter("cid"));
-        String pname = req.getParameter("pname");
-        double price = Double.parseDouble(req.getParameter("price"));
+        String pname = req.getParameter(pnames);
+        double price = Double.parseDouble(req.getParameter(prices));
         HttpSession session = req.getSession();
         session.setAttribute("pid",pid);
         session.setAttribute("cid",cid);
@@ -90,21 +93,20 @@ public class CommodityServlet extends HttpServlet {
     }
 
     //添加商品
-    private void addGoods(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void addGoods(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         //获取表单元素
         String pid = req.getParameter("pid");
         String cid = req.getParameter("cid");
-        String pname = req.getParameter("pname");
-        String prices = req.getParameter("price");
-        double price = Double.parseDouble(prices);
+        String pname = req.getParameter(pnames);
+        double price = Double.valueOf(req.getParameter(prices));
         //传入service层
-        boolean b = commodityService.insertGoods(pid,cid,pname, price);
-        if (b){
-            resp.sendRedirect("/commodity");
+        boolean isExist = commodityService.insertGoods(pid,cid,pname, price);
+        if (isExist){
+            req.getRequestDispatcher(comm).forward(req,resp);
         }else {
             resp.getWriter().println("添加失败");
             //3秒刷新网页
-            resp.sendRedirect("/commodity");
+            req.getRequestDispatcher(comm).forward(req,resp);
         }
     }
 

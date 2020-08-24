@@ -15,6 +15,7 @@
 <h2>添加商品</h2>
 <hr>
 <form action="/addGoods" method="post">
+
     商品id:<br/>
     <input type="text" name="pid"><br/>
     商品类别:<br/>

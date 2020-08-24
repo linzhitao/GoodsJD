@@ -22,7 +22,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //页面提交表单
+        //页面提交表单1
         //获取请求的值
         String account = req.getParameter("account");
         String password = req.getParameter("password");

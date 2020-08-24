@@ -9,7 +9,6 @@ public class User {
         return uid;
     }
 
-
     public void setUid(Integer uid) {
         this.uid = uid;
     }

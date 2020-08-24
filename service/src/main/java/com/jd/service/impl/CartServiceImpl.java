@@ -15,8 +15,8 @@ public class CartServiceImpl  implements CartService {
 
     public void addCart(Integer uid, Integer pid) {
         //判断pid商品是否存在，不存在则添加
-        boolean b = cartDAO.selectByPid(pid);
-        if (b){
+        boolean isExist = cartDAO.selectByPid(pid);
+        if (isExist){
             System.out.println("商品已存在购物车");
         }else {
             cartDAO.insert(uid,pid);

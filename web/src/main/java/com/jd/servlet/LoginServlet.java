@@ -1,6 +1,5 @@
 package com.jd.servlet;
 
-import com.jd.bean.User;
 import com.jd.service.LoginService;
 import com.jd.service.impl.LoginServiceImpl;
 

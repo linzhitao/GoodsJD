@@ -1,7 +1,6 @@
 package com.jd.util;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
@@ -21,9 +20,7 @@ public class Close {
             url = properties.getProperty("jdbc.url");
             username = properties.getProperty("jdbc.username");
             password = properties.getProperty("jdbc.password");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -40,38 +37,38 @@ public class Close {
         return conn;
     }
 
-    public static void release(ResultSet rs, Statement st, Connection conn){
-        closeRs(rs);
-        closeSt(st);
+    public static void release(ResultSet resultSet, Statement statement, Connection conn){
+        closeRs(resultSet);
+        closeSt(statement);
         closeConn(conn);
     }
 
-    public static void release(Statement st,Connection conn){
-        closeSt(st);
+    public static void release(Statement statement,Connection conn){
+        closeSt(statement);
         closeConn(conn);
     }
 
-    private static void closeRs(ResultSet rs){
+    private static void closeRs(ResultSet resultSet){
         try {
-            if(rs != null){
-                rs.close();
+            if(resultSet != null){
+                resultSet.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{
-            rs =null;
+            resultSet =null;
         }
     }
 
-    private static void closeSt(Statement st){
+    private static void closeSt(Statement statement){
         try {
-            if(st != null){
-                st.close();
+            if(statement != null){
+                statement.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{
-            st = null;
+            statement = null;
         }
     }
 

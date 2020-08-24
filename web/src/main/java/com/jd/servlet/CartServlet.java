@@ -39,6 +39,7 @@ public class CartServlet extends HttpServlet {
             reGoodsCart(req,resp);
         }
     }
+
     //购物车中删除某个商品
     private void reGoodsCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //用户id

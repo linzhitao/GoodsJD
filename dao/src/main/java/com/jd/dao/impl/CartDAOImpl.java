@@ -1,46 +1,40 @@
 package com.jd.dao.impl;
 
+import com.jd.dao.Bean;
 import com.jd.dao.CartDAO;
 import com.jd.util.Close;
 
 import java.sql.*;
 
-public class CartDAOImpl implements CartDAO {
-    private Connection conn = Close.getConn();
-    private Statement st;
-    private ResultSet rs;
-    private PreparedStatement ps;
-    private boolean sure=true;
-    private String sql;
+public class CartDAOImpl extends Bean implements CartDAO {
+
 
     //添加
     public void insert(Integer uid, Integer pid) {
         try {
-            conn = Close.getConn();
             sql = "insert into itable (uid,pid) values (?,?)";
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1,uid);
-            ps.setInt(2,pid);
-            ps.executeUpdate();
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,uid);
+            preparedStatement.setInt(2,pid);
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            Close.release(ps,conn);
+            Close.release(preparedStatement,conn);
         }
     }
 
     public boolean selectByPid(Integer pid) {
         try {
-            conn = Close.getConn();
             sql = "select * from itable where pid =?";
-            ps = conn.prepareStatement(sql);
-            ps.setObject(1,pid);
-            rs = ps.executeQuery();
-            sure = rs.next();
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setObject(1,pid);
+            resultSet = preparedStatement.executeQuery();
+            sure = resultSet.next();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            Close.release(ps,conn);
+            Close.release(preparedStatement,conn);
         }
         return sure;
     }
@@ -48,12 +42,11 @@ public class CartDAOImpl implements CartDAO {
 
     public boolean deleteGoods(Integer pid, Integer uid) {
         try {
-            conn = Close.getConn();
             sql = "DELETE from itable where uid=? and pid=?";
-            ps = conn.prepareStatement(sql);
-            ps.setObject(1,uid);
-            ps.setObject(2,pid);
-            int i = ps.executeUpdate();
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setObject(1,uid);
+            preparedStatement.setObject(2,pid);
+            int i = preparedStatement.executeUpdate();
             if (i>0){
                 sure=true;
             }else {
@@ -62,7 +55,7 @@ public class CartDAOImpl implements CartDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            Close.release(ps,conn);
+            Close.release(preparedStatement,conn);
         }
         return sure;
     }

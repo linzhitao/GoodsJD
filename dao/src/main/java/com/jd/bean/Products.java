@@ -5,13 +5,8 @@ public class Products {
     private Integer cid;
     private String pname;
     private Double price;
-    private int size;
 
-
-
-    public Products(){
-
-    }
+    public Products(){}
 
     public Products(Integer pid, Integer cid, String pname, Double price) {
         this.pid = pid;
@@ -19,14 +14,16 @@ public class Products {
         this.pname = pname;
         this.price = price;
     }
-
-    public int getSize() {
-        return size;
+    @Override
+    public String toString() {
+        return "Products{" +
+                "pid=" + pid +
+                ", cid=" + cid +
+                ", pname='" + pname + '\'' +
+                ", price=" + price +
+                '}';
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
     public Integer getPid() {
         return pid;
     }
