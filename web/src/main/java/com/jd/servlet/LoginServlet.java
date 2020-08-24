@@ -36,5 +36,6 @@ public class LoginServlet extends HttpServlet {
         }else {
             resp.getWriter().println("账号或密码错误");
         }
+
     }
 }

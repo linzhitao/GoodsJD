@@ -4,14 +4,29 @@ public class Products {
     private Integer pid;
     private Integer cid;
     private String pname;
-    private double price;
+    private Double price;
+    private int size;
 
-    public Products(Integer pid, Integer cid, String pname, double price) {
+
+
+    public Products(){
+
     }
 
-    public Products() {
+    public Products(Integer pid, Integer cid, String pname, Double price) {
+        this.pid = pid;
+        this.cid = cid;
+        this.pname = pname;
+        this.price = price;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
     public Integer getPid() {
         return pid;
     }
@@ -36,21 +51,11 @@ public class Products {
         this.pname = pname;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Products{" +
-                "pid=" + pid +
-                ", cid=" + cid +
-                ", pname='" + pname + '\'' +
-                ", price=" + price +
-                '}';
     }
 }

@@ -27,5 +27,6 @@
     </form>
     <!--发现页面点击修改，然后不行修改要返回，这样电机加入购物车会有BUG，特意添加取消修改按钮  -->
     <button><a href="${pageContext.request.contextPath}/commodity">取消修改</a></button>
+
 </body>
 </html>

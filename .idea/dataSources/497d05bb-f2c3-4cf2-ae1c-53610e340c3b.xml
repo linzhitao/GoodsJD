@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="goods@c7">
+<dataSource name="c7">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.17">
     <root id="1">
       <ServerVersion>5.7.24</ServerVersion>
@@ -925,92 +925,87 @@
     <column id="236" parent="231" name="pid">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="237" parent="231" name="pname">
       <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="238" parent="231" name="price">
       <Position>3</Position>
-      <DataType>decimal(10,2 digit)|0s</DataType>
+      <DataType>double(10,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="239" parent="231" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>pid</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="240" parent="232" name="cid">
+    <column id="239" parent="232" name="cid">
       <Position>1</Position>
       <Comment>类别id</Comment>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="232" name="cname">
+    <column id="240" parent="232" name="cname">
       <Position>2</Position>
       <Comment>类别名字</Comment>
       <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <key id="242" parent="232" name="PRIMARY">
+    <key id="241" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="243" parent="233" name="id">
+    <column id="242" parent="233" name="id">
       <Position>1</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="233" name="uid">
+    <column id="243" parent="233" name="uid">
       <Position>2</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="233" name="pid">
+    <column id="244" parent="233" name="pid">
       <Position>3</Position>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="246" parent="233" name="PRIMARY">
+    <key id="245" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="247" parent="234" name="pid">
+    <column id="246" parent="234" name="pid">
       <Position>1</Position>
       <Comment>商品id</Comment>
       <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="234" name="cid">
+    <column id="247" parent="234" name="cid">
       <Position>2</Position>
       <Comment>类别id</Comment>
       <DataType>int(10)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="234" name="pname">
+    <column id="248" parent="234" name="pname">
       <Position>3</Position>
       <Comment>商品名</Comment>
       <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="234" name="price">
+    <column id="249" parent="234" name="price">
       <Position>4</Position>
       <Comment>商品价格</Comment>
-      <DataType>decimal(6,2 digit)|0s</DataType>
+      <DataType>double(6,2 digit)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="235" name="id">
+    <column id="250" parent="235" name="uid">
       <Position>1</Position>
       <Comment>用户id，自增长</Comment>
       <DataType>int(100)|0s</DataType>
@@ -1018,23 +1013,23 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="235" name="account">
+    <column id="251" parent="235" name="account">
       <Position>2</Position>
       <Comment>账户，不能为空</Comment>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="235" name="password">
+    <column id="252" parent="235" name="password">
       <Position>3</Position>
       <Comment>密码，不能为空</Comment>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="254" parent="235" name="PRIMARY">
+    <key id="253" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
+      <ColNames>uid</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

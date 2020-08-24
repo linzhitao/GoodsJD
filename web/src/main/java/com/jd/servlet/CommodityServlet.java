@@ -56,7 +56,7 @@ public class CommodityServlet extends HttpServlet {
         int pid = Integer.parseInt(req.getParameter("pid"));
         int cid = Integer.parseInt(req.getParameter("cid"));
         String pname = req.getParameter("pname");
-        double price = Double.parseDouble(req.getParameter("price"));
+        Double price =Double.valueOf(req.getParameter("price")) ;
         System.out.println(pname);
         Products products = new Products(pid, cid, pname, price);
 

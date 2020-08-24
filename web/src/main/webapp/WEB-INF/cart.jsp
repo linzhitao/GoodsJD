@@ -23,6 +23,7 @@
         <td align="center" width="50">商品价格</td>
         <td align="center" width="50">操作</td>
     </tr>
+    <c:if  test="${uid!=null}">
     <c:forEach items="${sessionScope.pro}" var="p">
         <tr>
             <td>${p.pid}</td>
@@ -31,6 +32,17 @@
             <td><a href="/reGoodsCart?pid=${p.pid}">删除商品</a></td>
         </tr>
     </c:forEach>
+    </c:if>
+    <c:if  test="${uid==null}">
+    <c:forEach items="${sessionScope.guestList}" var="g">
+        <tr>
+            <td>${g.pid}</td>
+            <td>${g.pname}</td>
+            <td>${g.price}</td>
+            <td><a href="">删除商品</a> </td>
+        </tr>
+    </c:forEach>
+    </c:if>
 </table>
 
 </body>

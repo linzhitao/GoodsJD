@@ -32,7 +32,7 @@
             <td>${user.cid}</td>
             <td>${user.pname}</td>
             <td>${user.price}</td>
-            <td><a href="${pageContext.request.contextPath}/addCart?pid=${user.pid}">加入购物车</a></td>
+            <td><a href="${pageContext.request.contextPath}/addCart?pid=${user.pid}&pname=${user.pname}&price=${user.price}">加入购物车</a></td>
             <td>
                 <a href="${pageContext.request.contextPath}/modif?pid=${user.pid}&cid=${user.cid}&pname=${user.pname}&price=${user.price}">修改商品</a><br/>
                 <a href="${pageContext.request.contextPath}/GoodsDrop?pid=${user.pid}">删除商品</a>

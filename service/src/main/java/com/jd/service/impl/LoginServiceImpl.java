@@ -24,6 +24,5 @@ public class LoginServiceImpl implements LoginService {
         }else {
             return loginDao.insert(account, password);
         }
-
     }
 }

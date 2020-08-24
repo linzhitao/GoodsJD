@@ -40,5 +40,6 @@ public class RegisterServlet extends HttpServlet {
             //3秒刷新网页
             resp.setHeader("refresh", "3;url=/WEB-INF/register.jsp");
         }
+
     }
 }

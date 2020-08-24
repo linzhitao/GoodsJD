@@ -32,6 +32,7 @@ public class LoginDAOImpl implements LoginDAO {
 
     }
 
+
     //用户登录非sql注入
     public Integer login(String account, String password) {
         Integer uid=null;
@@ -54,7 +55,7 @@ public class LoginDAOImpl implements LoginDAO {
         return uid;
     }
 
-    //注册
+    //注册l
     public boolean insert(String account, String password) {
         try {
             sql="INSERT INTO user (account,password) VALUE (?,?)";

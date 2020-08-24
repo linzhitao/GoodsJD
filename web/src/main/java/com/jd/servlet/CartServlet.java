@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartServlet extends HttpServlet {
@@ -50,17 +51,42 @@ public class CartServlet extends HttpServlet {
     private void selectCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         Integer uid = (Integer) session.getAttribute("uid");
-        List<Products> products = cartService.queryGoodsByUid(uid);
-        session.setAttribute("pro",products);
-        req.getRequestDispatcher("/WEB-INF/cart.jsp").forward(req, resp);
+        if(uid!=null){
+            List<Products> products = cartService.queryGoodsByUid(uid);
+            session.setAttribute("pro",products);
+            req.getRequestDispatcher("/WEB-INF/cart.jsp").forward(req, resp);
+        }else {
+            req.getRequestDispatcher("/WEB-INF/cart.jsp").forward(req, resp);
+        }
+
     }
 
     //添加购物车
-    private void addCart(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void addCart(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         HttpSession session = req.getSession();
         Integer uid = (Integer) session.getAttribute("uid");
         Integer pid= Integer.parseInt(req.getParameter("pid"));
-        cartService.addCart(uid,pid);
-        resp.sendRedirect("/commodity");
+        String pname = req.getParameter("pname");
+        Double price = Double.valueOf(req.getParameter("price"));
+        List<Products> guestList = new ArrayList<>();
+
+        if(uid!=null){
+            //用户登录
+            cartService.addCart(uid,pid);
+            req.getRequestDispatcher("/commodity").forward(req,resp);
+
+        }else {
+            System.out.println(1);
+            //游客登录
+            Products products = new Products();
+            products.setPid(pid);
+            products.setPname(pname);
+            products.setPrice(price);
+            guestList.add(products);
+            System.out.println(products.toString());
+            req.getSession().setAttribute("guestList",guestList);
+            req.getRequestDispatcher("/commodity").forward(req,resp);
+        }
+
     }
 }

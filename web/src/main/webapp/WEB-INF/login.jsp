@@ -13,5 +13,6 @@
 </form>
 <button><a href="${pageContext.request.contextPath}/register">注册</a></button>
 <button><a href="/commodity">游客登录</a></button>
+
 </body>
 </html>

@@ -42,6 +42,7 @@ public class CommodityDAOImpl implements CommodityDAO {
         }
         return productList;
     }
+
     //添加商品
     public boolean insertGoods(String pid, String cid, String pname, double price) {
         try {
@@ -134,5 +135,4 @@ public class CommodityDAOImpl implements CommodityDAO {
 
         return productList;
     }
-
 }

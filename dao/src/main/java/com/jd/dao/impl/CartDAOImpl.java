@@ -45,6 +45,7 @@ public class CartDAOImpl implements CartDAO {
         return sure;
     }
 
+
     public boolean deleteGoods(Integer pid, Integer uid) {
         try {
             conn = Close.getConn();
@@ -65,4 +66,5 @@ public class CartDAOImpl implements CartDAO {
         }
         return sure;
     }
+
 }

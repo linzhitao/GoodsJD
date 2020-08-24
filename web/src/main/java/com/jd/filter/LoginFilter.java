@@ -23,26 +23,22 @@ public class LoginFilter implements Filter {
         if (uri.contains("login") || uri.contains("register") || uri.contains("commodity")){
             chain.doFilter(req,resp);
         }else {
-            req.setAttribute("login-msg","该页面，需要登陆后才能访问");
-            req.getRequestDispatcher("/WEB-INF/login.jsp").forward(servletRequest,servletResponse);
-            /*String account = (String) req.getSession().getAttribute("account");
+            String account = (String) req.getSession().getAttribute("account");
             //如果用户存在，则放行。
             if (account!=null){
                 chain.doFilter(req,resp);
             }else {
-                if (uri.contains("GotoAdd")||uri.contains("modif")||uri.contains("GoodsDrop")){
-                    //处于游客登录拦截添加商品，修改商品，删除商品，
+                if (uri.contains("selectCart")||uri.contains("addCart")){
+                    //查看购物车和加入购物车，游客是可以操作的所以放行
+                    chain.doFilter(req,resp);
+                }else {
+                    //其他的请求就会拦截
                     req.setAttribute("login-msg","该页面，需要登陆后才能访问");
                     req.getRequestDispatcher("/WEB-INF/login.jsp").forward(servletRequest,servletResponse);
-                }else {
-                    //其余页面和请求,游客登录也可以访问，所以放行
-                    chain.doFilter(req,resp);
                 }
-            }*/
+            }
         }
-
     }
-
     @Override
     public void destroy() {
 

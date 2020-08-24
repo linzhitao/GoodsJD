@@ -86,5 +86,4 @@ public class Close {
             conn = null;
         }
     }
-
 }

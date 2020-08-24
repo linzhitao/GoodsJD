@@ -30,4 +30,5 @@ public class CartServiceImpl  implements CartService {
     public boolean deleteGoods(Integer pid, Integer uid) {
         return cartDAO.deleteGoods(pid,uid);
     }
+
 }

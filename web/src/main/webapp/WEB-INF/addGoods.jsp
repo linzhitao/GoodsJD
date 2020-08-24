@@ -24,6 +24,7 @@
     商品价格:<br/>
     <input type="text" name="price"><br/>
     <input type="submit" value="添加商品">
+
 </form>
 </body>
 </html>
