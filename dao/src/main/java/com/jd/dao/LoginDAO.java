@@ -16,6 +16,6 @@ public interface LoginDAO {
      * @param password 密码
      * @return
      */
-    boolean insert(String account, String password);
+    boolean add(String account, String password);
 
 }

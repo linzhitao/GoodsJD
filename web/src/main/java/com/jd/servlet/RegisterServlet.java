@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/register")
@@ -26,19 +27,15 @@ public class RegisterServlet extends HttpServlet {
         //获取请求的值
         String account = req.getParameter("account");
         String password = req.getParameter("password");
-        System.out.println(account+password);
-
         boolean insertyN = loginService.insertUser(account, password);
-
+        HttpSession session = req.getSession();
         if (insertyN){
-            System.out.println(insertyN);
-            resp.getWriter().println("注册成功");
+            session.setAttribute("color","注册成功，请登录！");
             //注册成功，转发到登录页面
             req.getRequestDispatcher("/WEB-INF/login.jsp").forward(req, resp);
         }else {
-            resp.getWriter().println("注册失败");
-            //3秒刷新网页
-            resp.setHeader("refresh", "3;url=/WEB-INF/register.jsp");
+            session.setAttribute("color","注册失败,需要重新注册！");
+            resp.setHeader("refresh", "3;url=/register");
         }
 
     }

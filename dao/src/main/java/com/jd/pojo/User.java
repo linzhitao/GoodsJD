@@ -1,4 +1,4 @@
-package com.jd.bean;
+package com.jd.pojo;
 
 public class User {
     private Integer uid;

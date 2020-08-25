@@ -1,7 +1,6 @@
 package com.jd.dao;
 
-import com.jd.bean.Products;
-import com.jd.util.Close;
+import com.jd.pojo.Products;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

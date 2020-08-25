@@ -16,12 +16,13 @@
 </head>
 <body>
 <h2>在线购物</h2>
+<div style="color:red;">${status}</div>
 <hr>
     <table border="1" width="600">
 
         <tr bgcolor="#dddddd">
             <td align="center" width="50">商品id</td>
-            <td align="center" width="30">类别id</td>
+            <td align="center" width="30">类别</td>
             <td align="center" width="50">商品名称</td>
             <td align="center" width="50">商品价格</td>
             <td align="center" width="50">在线购买</td>

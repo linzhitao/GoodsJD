@@ -15,13 +15,12 @@ public class LoginServiceImpl implements LoginService {
     public boolean insertUser(String account, String password) {
         //查询数据库里面是否有此账户
         Integer login = loginDao.login(account, password);
-        System.out.println(login);
         //如果返回true代表有值
-        if (login!=0){
+        if (login!=null){
             System.out.println("用户已存在");
             return false;
         }else {
-            return loginDao.insert(account, password);
+            return loginDao.add(account, password);
         }
     }
 }

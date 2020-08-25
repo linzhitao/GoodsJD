@@ -1,6 +1,6 @@
 package com.jd.servlet;
 
-import com.jd.bean.Products;
+import com.jd.pojo.Products;
 import com.jd.service.CartService;
 import com.jd.service.impl.CartServiceImpl;
 

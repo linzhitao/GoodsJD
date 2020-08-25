@@ -59,8 +59,7 @@
     <servlet-name>cart</servlet-name>
     <url-pattern>/reGoodsCart</url-pattern>
   </servlet-mapping>
-  
-  
+
   <filter>
     <filter-name>charsetEncodingFilter</filter-name>
     <filter-class>com.jd.filter.CharsetEncodingFilter</filter-class>

@@ -1,6 +1,6 @@
 package com.jd.dao.impl;
 
-import com.jd.bean.Products;
+import com.jd.pojo.Products;
 import com.jd.dao.Bean;
 import com.jd.dao.CommodityDAO;
 import com.jd.util.Close;
@@ -17,8 +17,7 @@ public class CommodityDAOImpl extends Bean implements CommodityDAO {
         try {
             conn = Close.getConn();
             statement = conn.createStatement();
-            sql="select * from products";
-
+            sql="select pid,cid,pname,price from products";
             resultSet = statement.executeQuery(sql);
             productList = new ArrayList<>();
             while (resultSet.next()){
@@ -38,7 +37,7 @@ public class CommodityDAOImpl extends Bean implements CommodityDAO {
     }
 
     //添加商品
-    public boolean insertGoods(String pid, String cid, String pname, double price) {
+    public boolean add(String pid, String cid, String pname, double price) {
         try {
             conn=Close.getConn();
             sql = "insert into products (pid,cid,pname,price) values (?,?,?,?)";
@@ -61,7 +60,7 @@ public class CommodityDAOImpl extends Bean implements CommodityDAO {
         return sure;
     }
     //修改商品
-    public boolean updateGoods(Products products) {
+    public boolean update(Products products) {
         try {
             conn=Close.getConn();
             sql = "UPDATE products SET cid=?,pname=?,price=? WHERE pid=?";
@@ -84,7 +83,7 @@ public class CommodityDAOImpl extends Bean implements CommodityDAO {
         return sure;
     }
 
-    public boolean deleteGoodsById(String pid) {
+    public boolean delete(String pid) {
         try {
             conn=Close.getConn();
             sql = "DELETE FROM products where pid = ?";
@@ -108,11 +107,11 @@ public class CommodityDAOImpl extends Bean implements CommodityDAO {
     public List<Products> queryGoodsByUid(Integer uid) {
         try {
             conn=Close.getConn();
-            sql = "SELECT * from products where pid in (select pid from itable where uid=?)";
+            sql = "SELECT pid,cid,pname,price from products where pid in (select pid from itable where uid=?)";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1,uid);
             resultSet = preparedStatement.executeQuery();
-            productList = new ArrayList<>();
+            productList = new ArrayList<Products>();
             while (resultSet.next()){
                 products =new Products();
                 products.setPid(resultSet.getInt("pid"));

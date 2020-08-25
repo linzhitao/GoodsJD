@@ -55,8 +55,6 @@ public class Close {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally{
-            resultSet =null;
         }
     }
 
@@ -67,8 +65,6 @@ public class Close {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally{
-            statement = null;
         }
     }
 
@@ -79,8 +75,6 @@ public class Close {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally{
-            conn = null;
         }
     }
 }

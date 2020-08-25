@@ -9,7 +9,7 @@ import java.sql.*;
 public class CartDAOImpl extends Bean implements CartDAO {
 
     //添加
-    public void insert(Integer uid, Integer pid) {
+    public void add(Integer uid, Integer pid) {
         try {
             conn=Close.getConn();
             sql = "insert into itable (uid,pid) values (?,?)";
@@ -41,7 +41,7 @@ public class CartDAOImpl extends Bean implements CartDAO {
     }
 
 
-    public boolean deleteGoods(Integer pid, Integer uid) {
+    public boolean delete(Integer pid, Integer uid) {
         try {
             conn=Close.getConn();
             sql = "DELETE from itable where uid=? and pid=?";

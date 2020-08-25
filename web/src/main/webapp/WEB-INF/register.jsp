@@ -13,6 +13,7 @@
 </head>
 <body>
 <h2>注册</h2>
+<div style="color:red;">${color}</div>
 <hr>
 <form action="register" method="post">
 

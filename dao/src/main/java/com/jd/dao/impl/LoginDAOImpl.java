@@ -10,7 +10,7 @@ public class LoginDAOImpl extends Bean implements LoginDAO {
     public Connection conn = Close.getConn();
 
     //用户登录sql注入
-    public void selectUserSQlinject(String account, String password){
+    public void sqlLogin(String account, String password){
         try {
             conn=Close.getConn();
             sql="select * from user where account=''"+account+"'and password='"+password+"'";
@@ -34,11 +34,10 @@ public class LoginDAOImpl extends Bean implements LoginDAO {
         Integer uid=null;
         try {
             conn=Close.getConn();
-            sql = "select * from user where account=? and password=?";
+            sql = "select uid from user where account=? and password=?";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,account);
             preparedStatement.setString(2,password);
-            System.out.println(sql);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()){
                 uid = resultSet.getInt("uid");
@@ -53,21 +52,21 @@ public class LoginDAOImpl extends Bean implements LoginDAO {
         return uid;
     }
 
-    //注册l
-    public boolean insert(String account, String password) {
+    //注册
+    public boolean add(String account, String password) {
         try {
+
             conn=Close.getConn();
             sql="INSERT INTO user (account,password) VALUE (?,?)";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,account);
             preparedStatement.setString(2,password);
-            int rse = preparedStatement.executeUpdate();
-            if (rse>0){
+            int updateCount = preparedStatement.executeUpdate();
+            if (updateCount>0){
                 sure=true;
             }else {
                 sure=false;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {

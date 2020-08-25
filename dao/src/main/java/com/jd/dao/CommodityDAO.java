@@ -1,6 +1,6 @@
 package com.jd.dao;
 
-import com.jd.bean.Products;
+import com.jd.pojo.Products;
 
 import java.util.List;
 
@@ -19,21 +19,21 @@ public interface CommodityDAO {
      * @param price 商品价格
      * @return
      */
-    boolean insertGoods(String pid, String cid, String pname, double price);
+    boolean add(String pid, String cid, String pname, double price);
 
     /**
      * 修改商品
      * @param products 商品信息
      * @return
      */
-    boolean updateGoods(Products products);
+    boolean update(Products products);
 
     /**
      * 删除某个商品
      * @param pid 商品id
      * @return
      */
-    boolean deleteGoodsById(String pid);
+    boolean delete(String pid);
 
     /**
      * 通过uid获取商品

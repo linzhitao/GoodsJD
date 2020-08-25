@@ -1,4 +1,4 @@
-package com.jd.bean;
+package com.jd.pojo;
 
 public class Products {
     private Integer pid;

@@ -21,10 +21,10 @@ public class LoginFilter implements Filter {
         if (uri.contains("login") || uri.contains("register") || uri.contains("commodity")){
             chain.doFilter(req,resp);
         }else {
-            //获取用户
-            String account = (String) req.getSession().getAttribute("account");
+            //获取用户id
+            Object uid = req.getSession().getAttribute("uid");
             //如果用户存在，则放行。
-            if (account!=null){
+            if (uid!=null){
                 chain.doFilter(req,resp);
             }else {
                 //游客添加购物车、查看购物车、删除购物车请求放行

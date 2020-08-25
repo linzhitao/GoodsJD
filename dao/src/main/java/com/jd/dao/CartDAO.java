@@ -6,7 +6,7 @@ public interface CartDAO {
      * @param uid 用户id
      * @param pid 商品id
      */
-    void insert(Integer uid, Integer pid);
+    void add(Integer uid, Integer pid);
 
     /**
      * 判断pid是否
@@ -21,6 +21,6 @@ public interface CartDAO {
      * @param uid
      * @return
      */
-    boolean deleteGoods(Integer pid, Integer uid);
+    boolean delete(Integer pid, Integer uid);
 
 }

@@ -1,6 +1,6 @@
 package com.jd.service;
 
-import com.jd.bean.Products;
+import com.jd.pojo.Products;
 
 import java.util.List;
 

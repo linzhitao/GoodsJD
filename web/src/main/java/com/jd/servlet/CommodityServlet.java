@@ -1,6 +1,6 @@
 package com.jd.servlet;
 
-import com.jd.bean.Products;
+import com.jd.pojo.Products;
 import com.jd.service.CommodityService;
 import com.jd.service.impl.CommodityServiceImpl;
 
@@ -14,6 +14,7 @@ import java.util.List;
 
 public class CommodityServlet extends HttpServlet {
     private CommodityService commodityService=new CommodityServiceImpl();
+
     private String prices="price";
     private String pnames="pname";
     private String comm="/commodity";
@@ -27,6 +28,7 @@ public class CommodityServlet extends HttpServlet {
     }
 
     private void doRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String servletPath = req.getServletPath();
         if (comm.equals(servletPath)){
             commodity(req,resp);
@@ -46,7 +48,12 @@ public class CommodityServlet extends HttpServlet {
     private void goodsDrop(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String pid = req.getParameter("pid");
         boolean b = commodityService.deleteGoodsByID(pid);
+        HttpSession session = req.getSession();
         if (b){
+            session.setAttribute("status","删除成功");
+            req.getRequestDispatcher(comm).forward(req,resp);
+        }else {
+            session.setAttribute("status","删除失败");
             req.getRequestDispatcher(comm).forward(req,resp);
         }
 
@@ -99,12 +106,14 @@ public class CommodityServlet extends HttpServlet {
         String cid = req.getParameter("cid");
         String pname = req.getParameter(pnames);
         double price = Double.valueOf(req.getParameter(prices));
+        HttpSession session = req.getSession();
         //传入service层
         boolean isExist = commodityService.insertGoods(pid,cid,pname, price);
         if (isExist){
+            session.setAttribute("status","添加成功");
             req.getRequestDispatcher(comm).forward(req,resp);
         }else {
-            resp.getWriter().println("添加失败");
+            session.setAttribute("status","添加失败");
             //3秒刷新网页
             req.getRequestDispatcher(comm).forward(req,resp);
         }

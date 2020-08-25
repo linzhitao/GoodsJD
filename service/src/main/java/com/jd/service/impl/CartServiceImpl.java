@@ -1,6 +1,6 @@
 package com.jd.service.impl;
 
-import com.jd.bean.Products;
+import com.jd.pojo.Products;
 import com.jd.dao.CartDAO;
 import com.jd.dao.CommodityDAO;
 import com.jd.dao.impl.CartDAOImpl;
@@ -19,7 +19,7 @@ public class CartServiceImpl  implements CartService {
         if (isExist){
             System.out.println("商品已存在购物车");
         }else {
-            cartDAO.insert(uid,pid);
+            cartDAO.add(uid,pid);
         }
     }
 
@@ -28,7 +28,7 @@ public class CartServiceImpl  implements CartService {
     }
 
     public boolean deleteGoods(Integer pid, Integer uid) {
-        return cartDAO.deleteGoods(pid,uid);
+        return cartDAO.delete(pid,uid);
     }
 
 }
